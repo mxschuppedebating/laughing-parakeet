@@ -1,0 +1,24 @@
+From 6e5cd4a2746998666b92ca4a7dbf7b3ec5f830be Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Sun, 15 Oct 2017 13:30:05 -0500
+Subject: [PATCH] m2r is not a strict build dependency
+
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 82e55fc..7a7885b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -24,7 +24,6 @@ setup(
+     package_dir={'automat': 'automat'},
+     setup_requires=[
+         'setuptools-scm',
+-        'm2r',
+     ],
+     install_requires=[
+         "attrs",
+-- 
+2.14.1
+

@@ -1,0 +1,55 @@
+{% set version = "20.2.0" %}
+
+package:
+  name: automat
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/A/Automat/Automat-{{ version }}.tar.gz
+  sha256: 7979803c74610e11ef0c0d68a2942b152df52da55336e0c9d58daf1831cbdf33
+  patches:
+    - 0001-m2r-is-not-a-strict-build-dependency.patch
+
+build:
+  number: 0
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  entry_points:
+    - automat-visualize = automat._visualize:tool
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools_scm
+  run:
+    - python
+    - attrs >=16.1.0
+    - six
+
+test:
+  requires:
+    - python-graphviz >0.5.1
+    - twisted >=16.1.1
+  imports:
+    - automat
+  commands:
+    - automat-visualize -h
+
+about:
+  home: https://github.com/glyph/Automat
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'self-service finite-state machines for the programmer on the go'
+  description: |
+    Automat is a library for concise, idiomatic Python expression of
+    finite-state automata (particularly deterministic finite-state
+    transducers).
+  doc_url: https://github.com/glyph/automat/
+  dev_url: https://github.com/glyph/automat/
+
+extra:
+  recipe-maintainers:
+    - CJ-Wright
+    - ocefpaf
